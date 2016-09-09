@@ -1,0 +1,43 @@
+﻿@model SampleProject.ViewModels.SampleSaveViewModel
+
+@{
+    Layout = null;
+    Model.IsCreateForm = Model.Sample.Id == default(int);
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Edit</title>
+</head>
+<body>    
+    @using (Html.BeginForm("Save", "Sample", FormMethod.Post)) {
+        @Html.AntiForgeryToken()
+        @Html.ValidationSummary(false)
+    
+        <fieldset>
+            <legend>SampleSaveViewModel</legend>
+            @Html.HiddenFor(m => m.IsCreateForm)
+            @Html.HiddenFor(m => m.Sample.Id)
+            @Html.LabelFor(m => m.Sample.Name)
+            @Html.TextAreaFor(m => m.Sample.Name)
+            @Html.ValidationMessageFor(m => m.Sample.Name, "*")
+            <br />
+            @Html.LabelFor(m => m.Sample.IsActive)
+            @Html.CheckBoxFor(m => m.Sample.IsActive)
+            <br />
+            @Html.LabelFor(m => m.Sample.RandomStatus)
+            @Html.DropDownListFor(m => m.Sample.RandomStatus, Model.StatusList)
+            <p>
+                <input type="submit" value="Save" />
+            </p>
+        </fieldset>
+    }
+    
+    <div>
+        @Html.ActionLink("Back to List", "Index")
+    </div>
+</body>
+</html>

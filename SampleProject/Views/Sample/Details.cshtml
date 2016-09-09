@@ -1,0 +1,51 @@
+﻿@model SampleProject.Models.SampleModel
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Details</title>
+</head>
+<body>
+    <fieldset>
+        <legend>SampleModel</legend>
+    
+        <div class="display-label">
+             @Html.DisplayNameFor(model => model.Name)
+        </div>
+        <div class="display-field">
+            @Html.DisplayFor(model => model.Name)
+        </div>
+        <br />
+        <div class="display-label">
+             @Html.DisplayNameFor(model => model.IsActive)
+        </div>
+        <div class="display-field">
+            @Html.DisplayFor(model => model.IsActive)
+        </div>
+        <br />
+        <div class="display-label">
+             @Html.DisplayNameFor(model => model.RandomStatus)
+        </div>
+        <div class="display-field">
+            @Enum.GetName(typeof(SampleProject.Models.Enums.SampleStatus), Model.RandomStatus)
+        </div>
+        <br />
+        <div class="display-label">
+             @Html.DisplayNameFor(model => model.CreateDate)
+        </div>
+        <div class="display-field">
+            @Html.DisplayFor(model => model.CreateDate)
+        </div>
+    </fieldset>
+    <p>
+        @Html.ActionLink("Edit", "Edit", new { id=Model.Id }) |
+        @Html.ActionLink("Back to List", "Index")
+    </p>
+</body>
+</html>
